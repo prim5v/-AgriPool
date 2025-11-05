@@ -1,12 +1,19 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import TransportActivityList from "../../components/TransportActivityList";
+import AcceptRejectBookings from "../../components/AcceptRejectBookings";
 
-const Activity = () => {
+const ActivityScreen = () => {
   return (
-    <View>
-      <Text>Activity</Text>
+    <View style={styles.container}>
+      <TransportActivityList />
+      <AcceptRejectBookings /> {/* silently polls and shows when needed */}
     </View>
-  )
-}
+  );
+};
 
-export default Activity
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#fff" },
+});
+
+export default ActivityScreen;

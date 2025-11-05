@@ -3,7 +3,8 @@ import React, { useContext, useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { useRouter } from "expo-router";
 import { AuthContext } from "../_Context/Auth.Context";
-
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function Index() {
   const { user, loading } = useContext(AuthContext);
@@ -23,21 +24,22 @@ export default function Index() {
     }
   }, [loading, user]);
 
-  // Show loader while AuthContext initializes
   if (loading) {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#fff",
-        }}
-      >
-        <ActivityIndicator size="large" color="#99744A" />
-      </View>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#fff",
+          }}
+        >
+          <ActivityIndicator size="large" color="#99744A" />
+        </View>
+      </GestureHandlerRootView>
     );
   }
 
-  return null;
+  return <GestureHandlerRootView style={{ flex: 1 }} />;
 }
